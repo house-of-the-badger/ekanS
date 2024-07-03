@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://80hpjr6jw12d"]
 
 [ext_resource type="Script" path="res://menus/hud.gd" id="1_chvqg"]
-[ext_resource type="FontFile" uid="uid://bgquwbyit1vjq" path="res://Styles/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_lgs45"]
+[ext_resource type="FontFile" uid="uid://bgquwbyit1vjq" path="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_lgs45"]
 
 [sub_resource type="Theme" id="Theme_imh0j"]
 default_font = ExtResource("2_lgs45")

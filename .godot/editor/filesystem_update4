@@ -1,1 +1,4 @@
-res://menus/SignUp.tscn
+res://menus/game_over_UI.tscn
+res://menus/hud.tscn
+res://menus/pause_menu_UI.tscn
+res://menus/Start_screen_UI.tscn
