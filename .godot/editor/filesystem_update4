@@ -1,7 +1,1 @@
-res://Styles/game_over_UI.tscn
-res://menus/start_screen.tscn
-res://gameplay/gameplay.gd
-res://menus/game_over_UI.tscn
-res://menus/game_over.tscn
-res://gameplay/gameplay.tscn
-res://menus/hud.tscn
+res://menus/SignUp.tscn

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bgquwbyit1vjq"
-path="res://.godot/imported/Fontspring-DEMO-riffic-ultrabold.ttf-2d7b9415655e3732297573d16f96d1cc.fontdata"
+path="res://.godot/imported/Fontspring-DEMO-riffic-ultrabold.ttf-c798a30f039152ef3c73dfd7ec081b18.fontdata"
 
 [deps]
 
-source_file="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf"
-dest_files=["res://.godot/imported/Fontspring-DEMO-riffic-ultrabold.ttf-2d7b9415655e3732297573d16f96d1cc.fontdata"]
+source_file="res://Styles/fonts/Fontspring-DEMO-riffic-ultrabold.ttf"
+dest_files=["res://.godot/imported/Fontspring-DEMO-riffic-ultrabold.ttf-c798a30f039152ef3c73dfd7ec081b18.fontdata"]
 
 [params]
 
