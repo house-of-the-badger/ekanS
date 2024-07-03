@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1720017429
+::res://::1720018271
 icon.svg::CompressedTexture2D::5646316598172133819::1720017396::1720017396::1::::<><>::
 README.md::TextFile::-1::1720017396::0::1::::<><>::
 ::res://autoloads/::1720017396
@@ -29,12 +29,18 @@ snake-head-right.png::CompressedTexture2D::5249804070477814200::1720017396::1720
 snake-head-up-down.png::CompressedTexture2D::4004867236934753912::1720017396::1720017396::1::::<><>::
 snake-head-up.png::CompressedTexture2D::402336317464703618::1720017396::1720017396::1::::<><>::
 snake-tail.png::CompressedTexture2D::2415559638780582748::1720017396::1720017396::1::::<><>::
-::res://menus/::1720017396
+::res://menus/::1720018271
 gameover.gd::GDScript::-1::1720017396::0::1::::GameOver<>CanvasLayer<>::
 game_over.tscn::PackedScene::3645817647619852412::1720017396::0::1::::<><>::res://menus/gameover.gd
+game_over_UI.tscn::PackedScene::4532090424552525749::1720018239::0::1::::<><>::res://menus/gameover.gd<>uid://bgquwbyit1vjq::::res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf
 hud.gd::GDScript::-1::1720017396::0::1::::HUD<>CanvasLayer<>::
 hud.tscn::PackedScene::2368293590157748961::1720017396::0::1::::<><>::res://menus/hud.gd
 pause_menu.gd::GDScript::-1::1720017396::0::1::::PauseMenu<>CanvasLayer<>::
 pause_menu.tscn::PackedScene::7934424196460164646::1720017396::0::1::::<><>::res://menus/pause_menu.gd
+pause_menu_UI.tscn::PackedScene::1969598068550865183::1720018239::0::1::::<><>::res://menus/pause_menu.gd<>uid://bgquwbyit1vjq::::res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf
 start_screen.gd::GDScript::-1::1720017396::0::1::::StartScreen<>CanvasLayer<>::
 start_screen.tscn::PackedScene::878678984040726175::1720017396::0::1::::<><>::res://menus/start_screen.gd
+::res://UI/::1720018271
+Start_screen_UI.tscn::PackedScene::2878514920777004157::1720018239::0::1::::<><>::res://menus/start_screen.gd<>uid://bgquwbyit1vjq::::res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf
+::res://UI/fonts/::1720018239
+Fontspring-DEMO-riffic-ultrabold.ttf::FontFile::2841837506896065174::1720012859::1720018239::1::::<><>::

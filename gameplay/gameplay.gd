@@ -2,8 +2,8 @@ class_name Gameplay extends Node2D #inherits from Node2D
 
 signal decrease_snake_length
 
-const gameover_scene:PackedScene = preload("res://menus/game_over.tscn")
-const pausemenu_scene:PackedScene = preload("res://menus/pause_menu.tscn")
+const gameover_scene:PackedScene = preload("res://menus/game_over_UI.tscn")
+const pausemenu_scene:PackedScene =preload("res://menus/pause_menu_UI.tscn")
 var tail_scene:PackedScene = preload("res://gameplay/tail.tscn")
 
 @export var textures:Array[Texture]
