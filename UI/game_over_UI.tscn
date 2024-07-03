@@ -1,17 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5tm4qoj80lpt"]
 
-[ext_resource type="Script" path="res://menus/gameover.gd" id="1_n1bt5"]
-[ext_resource type="FontFile" uid="uid://bgquwbyit1vjq" path="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_v34wk"]
+[ext_resource type="Script" path="res://menus/gameover.gd" id="1_o5e02"]
+[ext_resource type="FontFile" uid="uid://bgquwbyit1vjq" path="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_84kyp"]
 
-[sub_resource type="Theme" id="Theme_h7qjq"]
-default_font = ExtResource("2_v34wk")
+[sub_resource type="Theme" id="Theme_oiht0"]
+default_font = ExtResource("2_84kyp")
 
 [sub_resource type="Theme" id="Theme_t1lwl"]
-default_font = ExtResource("2_v34wk")
+default_font = ExtResource("2_84kyp")
 
 [node name="GameOver" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_n1bt5")
+script = ExtResource("1_o5e02")
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0.756863)
@@ -20,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_h7qjq")
+theme = SubResource("Theme_oiht0")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 1

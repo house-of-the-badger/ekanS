@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://3cc80imerot0"]
 
-[ext_resource type="Script" path="res://menus/pause_menu.gd" id="1_cp6fv"]
-[ext_resource type="FontFile" uid="uid://bgquwbyit1vjq" path="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_saj3k"]
+[ext_resource type="Script" path="res://menus/pause_menu.gd" id="1_eeqwu"]
+[ext_resource type="FontFile" uid="uid://bgquwbyit1vjq" path="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_ucchu"]
 
 [sub_resource type="Theme" id="Theme_t8wsc"]
-default_font = ExtResource("2_saj3k")
+default_font = ExtResource("2_ucchu")
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_cp6fv")
+script = ExtResource("1_eeqwu")
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0.6)

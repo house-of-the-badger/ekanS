@@ -1,22 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhamyqskmhmif"]
+[gd_scene load_steps=4 format=3 uid="uid://clh5bf2hswqm3"]
 
-[ext_resource type="Script" path="res://menus/start_screen.gd" id="1_eh4rk"]
-[ext_resource type="FontFile" uid="uid://bgquwbyit1vjq" path="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_v4adb"]
+[ext_resource type="Script" path="res://menus/start_screen.gd" id="1_bam7w"]
+[ext_resource type="FontFile" uid="uid://bgquwbyit1vjq" path="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_6e7c1"]
 
 [sub_resource type="Theme" id="Theme_8unos"]
-default_font = ExtResource("2_v4adb")
+default_font = ExtResource("2_6e7c1")
 
 [node name="StartScreen" type="CanvasLayer"]
-script = ExtResource("1_eh4rk")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 8
-color = Color(0.721569, 0.960784, 0.733333, 1)
+script = ExtResource("1_bam7w")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
@@ -25,6 +16,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_8unos")
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+color = Color(0.721569, 0.960784, 0.733333, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
