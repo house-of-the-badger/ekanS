@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1ojpetuc5ffa"]
+
+[ext_resource type="PackedScene" uid="uid://bss23e1ose6yb" path="res://gameplay/head.tscn" id="1_mt1dg"]
+[ext_resource type="PackedScene" uid="uid://cxmdq0ko3w812" path="res://gameplay/tail.tscn" id="2_qsva0"]
+
+[node name="SnakeParts" type="Node2D" groups=["snake"]]
+
+[node name="Head" parent="." instance=ExtResource("1_mt1dg")]
+unique_name_in_owner = true
+position = Vector2(64, 96)
+scale = Vector2(0.5, 0.5)
+
+[node name="Tail" parent="." instance=ExtResource("2_qsva0")]
+unique_name_in_owner = true
+position = Vector2(64, 128)
