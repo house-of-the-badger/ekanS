@@ -2,13 +2,11 @@ res://menus/start_screen.tscn
 res://UI/game_over_UI.tscn
 res://menus/game_over.tscn
 res://menus/hud.tscn
-res://gameplay/gameplay.gd
-res://UI/Start_screen_UI.tscn
 res://UI/pause_menu_UI.tscn
-res://gameplay/gameplay.tscn
 res://menus/pause_menu.tscn
-res://UI/start_screen_UI.tscn
 res://gameplay/snake_parts.tscn
-res://menus/start_screen_UI.tscn
-res://menus/start_screen.gd
 res://gameplay/food.tscn
+res://UI/themes/css.css.tscn
+res://gameplay/gameplay.tscn
+res://UI/themes/default_theme.tres
+res://UI/hud_ui.tscn

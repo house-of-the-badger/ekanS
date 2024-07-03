@@ -1,10 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://clh5bf2hswqm3"]
+[gd_scene load_steps=11 format=3 uid="uid://clh5bf2hswqm3"]
 
 [ext_resource type="Script" path="res://menus/start_screen.gd" id="1_bam7w"]
 [ext_resource type="FontFile" uid="uid://bgquwbyit1vjq" path="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_6e7c1"]
 
 [sub_resource type="Theme" id="Theme_8unos"]
 default_font = ExtResource("2_6e7c1")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qms0r"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6kx3"]
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 4
+border_color = Color(0.798366, 0.798366, 0.798366, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+shadow_color = Color(0.802616, 0.802616, 0.802616, 0.6)
+shadow_size = 4
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rg3au"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_l57g5"]
+Button/styles/disabled = null
+Button/styles/hover = SubResource("StyleBoxFlat_qms0r")
+Button/styles/normal = SubResource("StyleBoxFlat_d6kx3")
+Button/styles/pressed = SubResource("StyleBoxFlat_rg3au")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2yuq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0fag"]
+bg_color = Color(0.338473, 0.338473, 0.338473, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="Theme" id="Theme_t3lbv"]
+Button/styles/hover = SubResource("StyleBoxFlat_i2yuq")
+Button/styles/normal = SubResource("StyleBoxFlat_r0fag")
 
 [node name="StartScreen" type="CanvasLayer"]
 script = ExtResource("1_bam7w")
@@ -60,9 +97,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="StartButton" type="Button" parent="Panel/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme = SubResource("Theme_l57g5")
 theme_override_colors/font_color = Color(0, 0.772549, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Start"
@@ -71,6 +108,7 @@ text = "Start"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme = SubResource("Theme_t3lbv")
 theme_override_font_sizes/font_size = 24
 text = "Quit"
 
