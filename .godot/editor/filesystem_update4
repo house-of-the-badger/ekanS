@@ -1,4 +1,5 @@
 res://menus/start_screen.tscn
+res://UI/themes/default_theme.tres
 res://UI/game_over_UI.tscn
 res://menus/game_over.tscn
 res://menus/hud.tscn
@@ -8,5 +9,5 @@ res://gameplay/snake_parts.tscn
 res://gameplay/food.tscn
 res://UI/themes/css.css.tscn
 res://gameplay/gameplay.tscn
-res://UI/themes/default_theme.tres
 res://UI/hud_ui.tscn
+res://UI/start_screen_UI.tscn

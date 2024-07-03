@@ -1,50 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://clh5bf2hswqm3"]
+[gd_scene load_steps=5 format=3 uid="uid://bnekwr0vreu8g"]
 
-[ext_resource type="Script" path="res://menus/start_screen.gd" id="1_bam7w"]
-[ext_resource type="FontFile" uid="uid://bgquwbyit1vjq" path="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_6e7c1"]
+[ext_resource type="Script" path="res://menus/start_screen.gd" id="1_8pfi5"]
+[ext_resource type="Theme" uid="uid://d28i6sdmb1rxd" path="res://UI/themes/default_theme.tres" id="2_eva7a"]
 
-[sub_resource type="Theme" id="Theme_8unos"]
-default_font = ExtResource("2_6e7c1")
+[sub_resource type="Theme" id="Theme_yd0mn"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qms0r"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6kx3"]
-bg_color = Color(1, 1, 1, 1)
-border_width_bottom = 4
-border_color = Color(0.798366, 0.798366, 0.798366, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43iie"]
+bg_color = Color(0.00784314, 0.631373, 0.0352941, 1)
 corner_radius_top_left = 7
 corner_radius_top_right = 7
 corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
-shadow_color = Color(0.802616, 0.802616, 0.802616, 0.6)
-shadow_size = 4
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rg3au"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="Theme" id="Theme_l57g5"]
-Button/styles/disabled = null
-Button/styles/hover = SubResource("StyleBoxFlat_qms0r")
-Button/styles/normal = SubResource("StyleBoxFlat_d6kx3")
-Button/styles/pressed = SubResource("StyleBoxFlat_rg3au")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2yuq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0fag"]
-bg_color = Color(0.338473, 0.338473, 0.338473, 1)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
-
-[sub_resource type="Theme" id="Theme_t3lbv"]
-Button/styles/hover = SubResource("StyleBoxFlat_i2yuq")
-Button/styles/normal = SubResource("StyleBoxFlat_r0fag")
 
 [node name="StartScreen" type="CanvasLayer"]
-script = ExtResource("1_bam7w")
+script = ExtResource("1_8pfi5")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
@@ -52,29 +21,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_8unos")
+theme = ExtResource("2_eva7a")
 
-[node name="ColorRect" type="ColorRect" parent="Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_vertical = 8
-color = Color(0.721569, 0.960784, 0.733333, 1)
+theme = ExtResource("2_eva7a")
+alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.792157, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -85,32 +49,35 @@ text = "SNAKE
 GAME"
 horizontal_alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="Panel/VBoxContainer"]
+[node name="ScoreLabel" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "High Score: 0"
 horizontal_alignment = 1
 
-[node name="GridContainer" type="VBoxContainer" parent="Panel/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/v_separation = 20
 
-[node name="StartButton" type="Button" parent="Panel/VBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-theme = SubResource("Theme_l57g5")
-theme_override_colors/font_color = Color(0, 0.772549, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "Start"
-
-[node name="QuitButton" type="Button" parent="Panel/VBoxContainer/GridContainer"]
+[node name="StartButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-theme = SubResource("Theme_t3lbv")
-theme_override_font_sizes/font_size = 24
+theme = SubResource("Theme_yd0mn")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0, 0.772549, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_styles/hover = SubResource("StyleBoxFlat_43iie")
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_type_variation = &"FlatButton"
 text = "Quit"
 
-[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/GridContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/GridContainer/QuitButton" to="." method="_on_quit_button_pressed"]
