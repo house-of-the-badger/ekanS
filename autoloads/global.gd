@@ -12,4 +12,3 @@ var starting_snake_length = Levels.Database[current_level].starting_length
 
 func _ready():
 	save_data = SaveData.load_or_create()
-	print(Levels.Database[current_level])

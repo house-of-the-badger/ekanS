@@ -14,7 +14,6 @@ func _on_area_entered(area):
 	elif area.is_in_group("prune"):
 		prune_eaten.emit()
 		area.call_deferred("queue_free")
-		print("prune eaten")
 	else:
 		#collided with something that isn't food
 		collided_with_tail.emit()

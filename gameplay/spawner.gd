@@ -42,6 +42,7 @@ func spawn_prune():
 	# 2 what we are spawning (instantiating)
 	var prune = prune_scene.instantiate()
 	prune.position = spawn_point
+	prune.prune_spawned_on_poop.connect(prevents_spawn_prune)
 	get_parent().add_child(prune)
 
 func spawn_tail(pos:Vector2):
@@ -52,18 +53,18 @@ func spawn_tail(pos:Vector2):
 		tail.position = pos + Vector2(head_position.x, (i + 9) * Global.CELL_SIZE)
 		get_parent().add_child(tail)
 		tail_added.emit(tail)
+
+func despawn_last_node_in_group(group_name):
+	var nodes_in_group = get_tree().get_nodes_in_group(group_name)
+	if nodes_in_group.size() > 0:
+		nodes_in_group.back().queue_free()
 		
 func prevents_spawn_food():
-	var despawned_food = []
-	for node in get_tree().get_nodes_in_group("food"):
-		despawned_food.append(node)
-	if despawned_food.back():
-		despawned_food.back().queue_free()
+	print("tried to spawn food")
+	despawn_last_node_in_group("food")
 	spawn_food()
 	
-	for node in get_tree().get_nodes_in_group("prune"):
-		despawned_food.append(node)
-	if despawned_food.back():
-		despawned_food.back().queue_free()
-	if (Global.current_level != "level1"):
-		spawn_prune()
+func prevents_spawn_prune():
+	print("tried to spawn prune")
+	despawn_last_node_in_group("prune")
+	spawn_prune()
