@@ -6,8 +6,7 @@
 [sub_resource type="Theme" id="Theme_oiht0"]
 default_font = ExtResource("2_84kyp")
 
-[sub_resource type="Theme" id="Theme_t1lwl"]
-default_font = ExtResource("2_84kyp")
+[sub_resource type="Theme" id="Theme_qo3rq"]
 
 [node name="GameOver" type="CanvasLayer"]
 process_mode = 3
@@ -38,14 +37,15 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme = SubResource("Theme_t1lwl")
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 4
+theme = SubResource("Theme_qo3rq")
+theme_override_colors/font_color = Color(0.00392157, 0.188235, 0.0117647, 1)
+theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 4
 theme_override_font_sizes/font_size = 92
 text = "GAME
 OVER"
 horizontal_alignment = 1
+justification_flags = 162
 
 [node name="GridContainer2" type="GridContainer" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2

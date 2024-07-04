@@ -1,2 +1,5 @@
-MarginContainer
 Label
+CanvasLayer
+RichTextLabel
+AnimationPlayer
+MarginContainer

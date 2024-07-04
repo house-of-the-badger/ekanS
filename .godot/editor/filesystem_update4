@@ -10,4 +10,7 @@ res://gameplay/food.tscn
 res://UI/themes/css.css.tscn
 res://gameplay/gameplay.tscn
 res://UI/hud_ui.tscn
+res://menus/start_screen.gd
+res://menus/rainbowLabel.gd
 res://UI/start_screen_UI.tscn
+res://menus/pause_menu.gd

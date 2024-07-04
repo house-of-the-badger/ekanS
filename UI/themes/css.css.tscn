@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://357v16ycty56"]
+[gd_scene load_steps=2 format=3 uid="uid://2j00pc70mvp0"]
 
 [sub_resource type="GDScript" id="GDScript_qbddm"]
 script/source = ".Button {
