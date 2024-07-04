@@ -1,9 +1,9 @@
-res://UI/pause_menu_UI.tscn
-res://UI/themes/default_theme.tres
 res://menus/start_screen.tscn
+res://UI/themes/default_theme.tres
 res://UI/game_over_UI.tscn
 res://menus/game_over.tscn
 res://menus/hud.tscn
+res://UI/pause_menu_UI.tscn
 res://menus/pause_menu.tscn
 res://gameplay/snake_parts.tscn
 res://gameplay/food.tscn
