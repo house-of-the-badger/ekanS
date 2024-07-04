@@ -51,14 +51,4 @@ unique_name_in_owner = true
 script = ExtResource("5_rex01")
 bounds = NodePath("../Bounds")
 
-[node name="Timer" type="Timer" parent="Spawner"]
-wait_time = 5.0
-autostart = true
-
-[node name="HUD" parent="." instance=ExtResource("6_qs64w")]
-unique_name_in_owner = true
-
-[connection signal="decrease_snake_length" from="." to="HUD" method="_on_gameplay_decrease_snake_length"]
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
-[connection signal="prune_eaten" from="Head" to="." method="_on_head_prune_eaten"]
-[connection signal="timeout" from="Spawner/Timer" to="." method="_on_timer_timeout"]

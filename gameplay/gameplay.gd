@@ -46,8 +46,6 @@ func _ready() -> void:
 	initialize_snake()
 	spawner.spawn_food()
 	
-	
-	
 func initialize_snake():
 		spawner.call_deferred("spawn_tail", snake_parts[snake_parts.size()-1].last_position)
 
@@ -95,16 +93,13 @@ func update_snake():
 	moves_counter += 1
 	
 	if(moves_counter % pooping_speed == 0):
-		score += 1
 		detach_tail()
 		speed += 300
 	if(snake_parts.size() <= 1): # waiting for win scene
-		Global.current_level = "level" + str(int(Global.current_level) + 1)
 		if not gameover_menu:
 			gameover_menu = gameover_scene.instantiate() as GameOver
 			add_child(gameover_menu)
 			gameover_menu.set_score(score)
-	
 	
 func _on_food_eaten():
 	detach_tail()
@@ -115,14 +110,12 @@ func _on_food_eaten():
 	#3 increase speed
 	speed += 300.0
 	#4 update score
-	score += 10
-	
+	score += 1
 
 func detach_tail():
 	var new_poop = snake_parts.pop_back()
 	decrease_snake_length.emit()
 	new_poop.get_node("Sprite2D").texture = textures[0]
-	
 
 func _on_tail_added(tail:Tail):
 		snake_parts.push_back(tail)
@@ -141,14 +134,3 @@ func pause_game():
 	if not pause_menu && not gameover_menu:
 		pause_menu = pausemenu_scene.instantiate() as PauseMenu
 		add_child(pause_menu)
-
-
-func _on_head_prune_eaten():
-	for i in 3:
-		detach_tail()
-	score += 20
-
-func _on_timer_timeout():
-	if (Levels.Database[Global.current_level].has_prunes):
-		spawner.call_deferred("spawn_prune")
-	
