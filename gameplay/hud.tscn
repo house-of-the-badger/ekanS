@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://dv002nnk85pl1"]
 
-[ext_resource type="Script" path="res://menus/hud_ui.gd" id="1_yibah"]
-[ext_resource type="FontFile" uid="uid://bgquwbyit1vjq" path="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_lgs45"]
+[ext_resource type="Script" path="res://gameplay/hud.gd" id="1_ryo14"]
+[ext_resource type="FontFile" uid="uid://bgquwbyit1vjq" path="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_whtpt"]
 
 [sub_resource type="Theme" id="Theme_imh0j"]
-default_font = ExtResource("2_lgs45")
+default_font = ExtResource("2_whtpt")
 
 [sub_resource type="Theme" id="Theme_ihilu"]
 
 [node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_yibah")
+script = ExtResource("1_ryo14")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 64)
@@ -33,7 +33,6 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
 [node name="Score" type="Label" parent="Panel/HBoxContainer/MarginContainer2"]
-unique_name_in_owner = true
 layout_mode = 2
 theme = SubResource("Theme_ihilu")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -48,7 +47,6 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
 [node name="SnakeLength" type="Label" parent="Panel/HBoxContainer/MarginContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.972549, 0, 1)
 theme_override_font_sizes/font_size = 24

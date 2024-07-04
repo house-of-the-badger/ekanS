@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bss23e1ose6yb" path="res://gameplay/head.tscn" id="2_f26u1"]
 [ext_resource type="Script" path="res://gameplay/bounds.gd" id="3_2fkhv"]
 [ext_resource type="Script" path="res://gameplay/spawner.gd" id="5_rex01"]
-[ext_resource type="PackedScene" uid="uid://iuet56tbrxsf" path="res://menus/hud_ui.tscn" id="7_skcim"]
+[ext_resource type="PackedScene" uid="uid://iuet56tbrxsf" path="res://UI/hud_ui.tscn" id="7_skcim"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a3lxk"]
 texture = ExtResource("2_dwsbb")
@@ -21,6 +21,8 @@ sources/0 = SubResource("TileSetAtlasSource_a3lxk")
 script = ExtResource("1_y073f")
 textures = Array[Texture]([ExtResource("2_f5o51")])
 metadata/_edit_horizontal_guides_ = [-7499.0]
+
+[node name="HUD" parent="." instance=ExtResource("7_skcim")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_8etck")
@@ -48,7 +50,5 @@ position = Vector2(480, 960)
 unique_name_in_owner = true
 script = ExtResource("5_rex01")
 bounds = NodePath("../Bounds")
-
-[node name="HUD" parent="." instance=ExtResource("7_skcim")]
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

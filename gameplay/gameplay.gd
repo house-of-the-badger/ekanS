@@ -4,19 +4,18 @@ signal decrease_snake_length
 
 const gameover_scene:PackedScene = preload("res://UI/game_over_UI.tscn")
 const pausemenu_scene:PackedScene = preload("res://UI/pause_menu_UI.tscn")
-const start_scene: PackedScene = preload("res://UI/start_screen_UI.tscn")
 var tail_scene:PackedScene = preload("res://gameplay/tail.tscn")
 
 @export var textures:Array[Texture]
 
 #drag node and release while pressing ctrl. make sure type is set as Head as this will help with autocomplete
-@onready var head: Head = %Head as Head 
-@onready var tail: Tail = %Tail as Tail
-@onready var bounds: Bounds = %Bounds as Bounds
-@onready var spawner: Spawner = %Spawner as Spawner
-@onready var hud: HUD = %HUD
+@onready var head = $Head
+#@onready var tail: 
+@onready var bounds = $Bounds
+@onready var spawner = $Spawner
+@onready var hud = $HUD
 #@onready var snake_parts: SnakeParts = %SnakeParts as SnakeParts
-@onready var snakebody = %snakebody
+#@onready var snakebody = %snakebody
 
 
 #set interval between snake movement
@@ -42,7 +41,6 @@ func _ready() -> void:
 	head.food_eaten.connect(_on_food_eaten)
 	head.collided_with_tail.connect(_on_tail_collided)
 	spawner.tail_added.connect(_on_tail_added)
-	#decrease_snake_length.connect(_on_decrease_snake_length)
 	time_since_last_move = time_between_moves
 	snake_parts.push_front(head) # tutorial was using push_back, but I think this is more correct? research
 	initialize_snake()
@@ -93,6 +91,7 @@ func update_snake():
 	for i in range(1, snake_parts.size(), 1):
 		snake_parts[i].move_to(snake_parts[i-1].last_position) # this ensures that the tail follows the head
 	moves_counter += 1
+	
 	if(moves_counter % pooping_speed == 0):
 		detach_tail()
 		speed += 300

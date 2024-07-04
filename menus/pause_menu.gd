@@ -6,7 +6,7 @@ class_name PauseMenu extends CanvasLayer
 func _on_resume_button_pressed():
 	queue_free()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		queue_free()
 
