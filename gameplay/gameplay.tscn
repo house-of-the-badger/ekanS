@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bss23e1ose6yb" path="res://gameplay/head.tscn" id="2_f26u1"]
 [ext_resource type="Script" path="res://gameplay/bounds.gd" id="3_2fkhv"]
 [ext_resource type="Script" path="res://gameplay/spawner.gd" id="5_rex01"]
-[ext_resource type="PackedScene" uid="uid://80hpjr6jw12d" path="res://menus/hud.tscn" id="6_qs64w"]
+[ext_resource type="Script" path="res://menus/hud.gd" id="7_avbf6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a3lxk"]
 texture = ExtResource("2_dwsbb")
@@ -53,8 +53,9 @@ bounds = NodePath("../Bounds")
 wait_time = 5.0
 autostart = true
 
-[node name="HUD" parent="." instance=ExtResource("6_qs64w")]
+[node name="HUD" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+script = ExtResource("7_avbf6")
 
 [connection signal="decrease_snake_length" from="." to="HUD" method="_on_gameplay_decrease_snake_length"]
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
