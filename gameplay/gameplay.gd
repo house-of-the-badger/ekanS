@@ -96,10 +96,12 @@ func update_snake():
 		detach_tail()
 		speed += 300
 	if(snake_parts.size() <= 1): # waiting for win scene
+		Global.current_level = "level" + str(int(Global.current_level) + 1)
 		if not gameover_menu:
 			gameover_menu = gameover_scene.instantiate() as GameOver
 			add_child(gameover_menu)
 			gameover_menu.set_score(score)
+	
 	
 func _on_food_eaten():
 	detach_tail()

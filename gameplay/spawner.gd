@@ -33,7 +33,8 @@ func spawn_food():
 
 func spawn_tail(pos:Vector2):
 	var head_position = head.position
-	for i in Global.starting_snake_length:
+	print(Global.starting_snake_length)
+	for i in Levels.Database[Global.current_level].starting_length:
 		var tail:Tail = tail_scene.instantiate() as Tail
 		tail.position = pos + Vector2(head_position.x, (i + 9) * Global.CELL_SIZE)
 		get_parent().add_child(tail)
