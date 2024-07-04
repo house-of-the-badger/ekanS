@@ -1,4 +1,4 @@
-class_name StartScreen extends CanvasLayer
+extends CanvasLayer
 
 const gameplay_scene:PackedScene = preload("res://gameplay/gameplay.tscn")
 

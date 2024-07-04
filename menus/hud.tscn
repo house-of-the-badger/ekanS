@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://80hpjr6jw12d"]
+[gd_scene load_steps=5 format=3 uid="uid://dv002nnk85pl1"]
 
-[ext_resource type="Script" path="res://menus/hud.gd" id="1_chvqg"]
+[ext_resource type="Script" path="res://menus/hud_ui.gd" id="1_yibah"]
 [ext_resource type="FontFile" uid="uid://bgquwbyit1vjq" path="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_lgs45"]
 
 [sub_resource type="Theme" id="Theme_imh0j"]
@@ -9,7 +9,7 @@ default_font = ExtResource("2_lgs45")
 [sub_resource type="Theme" id="Theme_ihilu"]
 
 [node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_chvqg")
+script = ExtResource("1_yibah")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 64)
