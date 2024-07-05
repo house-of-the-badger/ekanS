@@ -1,6 +1,6 @@
 class_name Gameplay extends Node2D #inherits from Node2D
 
-signal decrease_snake_length
+signal decrease_real_snake_length
 
 const gameover_scene:PackedScene = preload("res://UI/game_over_UI.tscn")
 const pausemenu_scene:PackedScene = preload("res://UI/pause_menu_UI.tscn")
@@ -16,10 +16,10 @@ var tail_scene:PackedScene = preload("res://gameplay/tail.tscn")
 @onready var bounds = $Bounds
 @onready var spawner = $Spawner
 @onready var hud = $HUD
-@onready var tail = $Tail
+#@onready var tail = $Tail
 
 #@onready var snake_parts: SnakeParts = %SnakeParts as SnakeParts
-@onready var snakebody = %snakebody
+#@onready var snakebody = %snakebody
 
 
 #set interval between snake movement
@@ -45,7 +45,7 @@ func _ready() -> void:
 	head.food_eaten.connect(_on_food_eaten)
 	head.collided_with_tail.connect(_on_tail_collided)
 	spawner.tail_added.connect(_on_tail_added)
-	#decrease_snake_length.connect(_on_decrease_snake_length)
+	hud.decrease_snake_length.connect(_on_decrease_snake_length)
 	time_since_last_move = time_between_moves
 	snake_parts.push_front(head) # tutorial was using push_back, but I think this is more correct? research
 	initialize_snake()
@@ -124,7 +124,7 @@ func _on_food_eaten():
 
 func detach_tail():
 	var new_poop = snake_parts.pop_back()
-	decrease_snake_length.emit()
+	decrease_real_snake_length.emit()
 	new_poop.get_node("Sprite2D").texture = textures[0]
 	
 
@@ -156,3 +156,5 @@ func _on_timer_timeout():
 	if (Levels.Database[Global.current_level].has_prunes):
 		spawner.call_deferred("spawn_prune")
 	
+func _on_decrease_snake_length():
+	hud.decrease_snake_length()
