@@ -50,6 +50,7 @@ func _ready() -> void:
 	snake_parts.push_front(head) # tutorial was using push_back, but I think this is more correct? research
 	initialize_snake()
 	spawner.spawn_food()
+	spawner.spawn_enemy()
 	
 	
 	
@@ -155,7 +156,6 @@ func _on_timer_timeout():
 	
 #func _on_decrease_snake_length():
 	#hud.decrease_snake_length()
-
 
 func _on_hud_decrease_snake_length():
 	hud.decrease_snake_length()
