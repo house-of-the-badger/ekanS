@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://nwp7yxm7l2m0"]
+
+[ext_resource type="Script" path="res://menus/Avatar_selection.gd" id="1_2koy5"]
+[ext_resource type="Texture2D" uid="uid://dqspweumdsoox" path="res://Assets/snake1.png" id="2_4srnd"]
+[ext_resource type="Texture2D" uid="uid://cdg875d0mfku4" path="res://Assets/snake2.png" id="3_4kf8b"]
+[ext_resource type="Texture2D" uid="uid://bskgg3ju67pi" path="res://Assets/snake3.png" id="4_k5sgk"]
+
+[node name="AvatarSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2koy5")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AvatarSelection" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VerticalContainer" type="VBoxContainer" parent="Panel/AvatarSelection"]
+layout_mode = 2
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/AvatarSelection/VerticalContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Choose your avatar"
+horizontal_alignment = 1
+
+[node name="AvatarContainer" type="GridContainer" parent="Panel/AvatarSelection/VerticalContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="Snake1" type="Button" parent="Panel/AvatarSelection/VerticalContainer/AvatarContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_4srnd")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Snake2" type="Button" parent="Panel/AvatarSelection/VerticalContainer/AvatarContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("3_4kf8b")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Snake3" type="Button" parent="Panel/AvatarSelection/VerticalContainer/AvatarContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("4_k5sgk")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/AvatarSelection/VerticalContainer"]
+layout_mode = 2
+
+[node name="UsernameLabel" type="Label" parent="Panel/AvatarSelection/VerticalContainer/VBoxContainer"]
+layout_mode = 2
+text = "Username:"
+
+[node name="Username" type="LineEdit" parent="Panel/AvatarSelection/VerticalContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 2
+placeholder_text = "@ExampleUsername"
+
+[node name="ConfirmButton" type="Button" parent="Panel/AvatarSelection/VerticalContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Confirm"
+
+[connection signal="pressed" from="Panel/AvatarSelection/VerticalContainer/AvatarContainer/Snake1" to="." method="_on_snake_1_pressed"]
+[connection signal="pressed" from="Panel/AvatarSelection/VerticalContainer/AvatarContainer/Snake2" to="." method="_on_snake_2_pressed"]
+[connection signal="pressed" from="Panel/AvatarSelection/VerticalContainer/AvatarContainer/Snake3" to="." method="_on_snake_3_pressed"]
+[connection signal="pressed" from="Panel/AvatarSelection/VerticalContainer/VBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]
