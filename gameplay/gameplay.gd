@@ -153,5 +153,9 @@ func _on_timer_timeout():
 	if (Levels.Database[Global.current_level].has_prunes):
 		spawner.call_deferred("spawn_prune")
 	
-func _on_decrease_snake_length():
+#func _on_decrease_snake_length():
+	#hud.decrease_snake_length()
+
+
+func _on_hud_decrease_snake_length():
 	hud.decrease_snake_length()
