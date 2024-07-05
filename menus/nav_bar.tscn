@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bm3x4v4ydi61j"]
+
+[node name="NavBar" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+modulate = Color(0.294118, 0.756863, 0.901961, 1)
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 60
+columns = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer/GridContainer/MarginContainer"]
+layout_mode = 2
+text = "Levels"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+
+[node name="Button2" type="Button" parent="Panel/HBoxContainer/GridContainer/MarginContainer2"]
+layout_mode = 2
+text = "Profile"

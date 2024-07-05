@@ -5,6 +5,8 @@ class_name SignUp extends Control
 func _ready(): 
 	Firebase.Auth.signup_succeeded.connect(on_signup_succeeded)
 	Firebase.Auth.signup_failed.connect(on_signup_failed)
+	Firebase.Auth.login_succeeded.connect(on_login_succeeded)
+	Firebase.Auth.login_failed.connect(on_login_failed)
 
 
 
@@ -29,4 +31,16 @@ func on_signup_succeeded(auth):
 func on_signup_failed(error_code, message):
 	print(error_code)
 	print(message)
+	%StateLabel.text = "%s" % message
+
+
+func _on_login_button_pressed():
+	var email = %EmailInput.text
+	var password = %PasswordInput.text
+	Firebase.Auth.login_with_email_and_password(email, password)
+	
+func on_login_succeeded(auth):
+	get_tree().change_scene_to_file("res://menus/Avatar_selection.tscn")
+	
+func on_login_failed(error_code, message):
 	%StateLabel.text = "%s" % message
