@@ -1,6 +1,6 @@
 class_name Gameplay extends Node2D #inherits from Node2D
 
-signal decrease_real_snake_length
+signal decrease_snake_length
 
 const gameover_scene:PackedScene = preload("res://UI/game_over_UI.tscn")
 const pausemenu_scene:PackedScene = preload("res://UI/pause_menu_UI.tscn")
@@ -45,7 +45,7 @@ func _ready() -> void:
 	head.food_eaten.connect(_on_food_eaten)
 	head.collided_with_tail.connect(_on_tail_collided)
 	spawner.tail_added.connect(_on_tail_added)
-	hud.decrease_snake_length.connect(_on_decrease_snake_length)
+	#hud.decrease_snake_length.connect(_on_decrease_snake_length)
 	time_since_last_move = time_between_moves
 	snake_parts.push_front(head) # tutorial was using push_back, but I think this is more correct? research
 	initialize_snake()
