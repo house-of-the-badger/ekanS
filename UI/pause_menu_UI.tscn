@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://3cc80imerot0"]
+
+[ext_resource type="Script" path="res://menus/pause_menu.gd" id="1_eeqwu"]
+[ext_resource type="FontFile" uid="uid://bgquwbyit1vjq" path="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_ucchu"]
+
+[sub_resource type="Theme" id="Theme_t8wsc"]
+default_font = ExtResource("2_ucchu")
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_eeqwu")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.6)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_t8wsc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 52
+text = "Game Paused"
+
+[node name="GridContainer" type="GridContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/v_separation = 20
+
+[node name="ResumeButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0588235, 0.823529, 0.639216, 1)
+theme_override_font_sizes/font_size = 24
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Resume"
+
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/GridContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/GridContainer/RestartButton" to="." method="_on_restart_button_pressed"]

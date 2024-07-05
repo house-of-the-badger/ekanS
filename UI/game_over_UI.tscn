@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5tm4qoj80lpt"]
+
+[ext_resource type="Script" path="res://menus/gameover.gd" id="1_o5e02"]
+[ext_resource type="FontFile" uid="uid://dkb11wc1qkuvq" path="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_84kyp"]
+
+[sub_resource type="Theme" id="Theme_oiht0"]
+default_font = ExtResource("2_84kyp")
+
+[sub_resource type="Theme" id="Theme_qo3rq"]
+
+[node name="GameOver" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_o5e02")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.756863)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_oiht0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_qo3rq")
+theme_override_colors/font_color = Color(0.00392157, 0.188235, 0.0117647, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 92
+text = "GAME
+OVER"
+horizontal_alignment = 1
+justification_flags = 162
+
+[node name="GridContainer2" type="GridContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/v_separation = 10
+
+[node name="ScoreLabel" type="Label" parent="Panel/HBoxContainer/VBoxContainer/GridContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Score: 0"
+horizontal_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="Panel/HBoxContainer/VBoxContainer/GridContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92549, 0.65098, 0.784314, 1)
+theme_override_font_sizes/font_size = 28
+text = "New High Score!"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 20
+
+[node name="RestartButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.348399, 0.800789, 0.965441, 1)
+theme_override_font_sizes/font_size = 24
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Quit"
+
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/GridContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/GridContainer/QuitButton" to="." method="_on_quit_button_pressed"]

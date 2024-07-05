@@ -29,7 +29,7 @@ func spawn_food():
 	food.position = spawn_point
 	food.spawned_on_poop.connect(prevents_spawn_food)
 	# 3 where we are putting it (parenting)
-	get_parent().add_child(food) #parent of spawner is gameplay, so we are adding child food to gameplay. this method works for simple projects
+	call_deferred("add_child", food) #parent of spawner is gameplay, so we are adding child food to gameplay. this method works for simple projects
 
 func spawn_prune():
 	# 1 where to spawn prune
