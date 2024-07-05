@@ -3,7 +3,7 @@ class_name Levels
 const Database = {
 	"level1": {
 		"speed": 2000,
-		"starting_length": 10,
+		"starting_length": 5,
 		"has_prunes": false,
 	},
 	"level2": {
