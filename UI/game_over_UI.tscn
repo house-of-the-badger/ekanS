@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5tm4qoj80lpt"]
 
-[ext_resource type="Script" path="res://menus/gameover.gd" id="1_o5e02"]
-[ext_resource type="FontFile" uid="uid://dkb11wc1qkuvq" path="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_84kyp"]
+[ext_resource type="Script" path="res://menus/gameover.gd" id="1_33y3e"]
+[ext_resource type="FontFile" uid="uid://dkb11wc1qkuvq" path="res://UI/fonts/Fontspring-DEMO-riffic-ultrabold.ttf" id="2_ealev"]
 
 [sub_resource type="Theme" id="Theme_oiht0"]
-default_font = ExtResource("2_84kyp")
+default_font = ExtResource("2_ealev")
 
 [sub_resource type="Theme" id="Theme_qo3rq"]
 
 [node name="GameOver" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_o5e02")
+script = ExtResource("1_33y3e")
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0.756863)

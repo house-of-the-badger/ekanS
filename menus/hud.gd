@@ -2,8 +2,8 @@ class_name HUD extends CanvasLayer
 
 signal decrease_snake_length
 
-@onready var score: Label = %Score
-@onready var snake_length: Label = %SnakeLength
+@onready var score = $Panel/MarginContainer/HBoxContainer/Score
+@onready var snake_length = $Panel/MarginContainer/HBoxContainer/SnakeLength
 
 var new_snake_length = Levels.Database[Global.current_level].starting_length
 
