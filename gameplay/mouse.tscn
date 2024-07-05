@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5ddu01jkuif5"]
+
+[ext_resource type="Script" path="res://gameplay/mouse.gd" id="1_x5rye"]
+[ext_resource type="Texture2D" uid="uid://baod6c77fga4c" path="res://gameplay/sprites/snake-tail.png" id="2_ehwad"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odpa6"]
+size = Vector2(70, 64)
+
+[node name="mouse" type="CharacterBody2D" groups=["mouse"]]
+position = Vector2(101, 116)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_x5rye")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 0)
+texture = ExtResource("2_ehwad")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_odpa6")

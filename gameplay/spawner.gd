@@ -10,6 +10,7 @@ signal tail_added(tail: Tail)
 var food_scene: PackedScene = preload ("res://gameplay/food.tscn") # preloads food into memory so instantiation is faster
 var tail_scene: PackedScene = preload ("res://gameplay/tail.tscn")
 var prune_scene: PackedScene = preload ("res://gameplay/prune.tscn")
+var mouse_scene: PackedScene = preload ("res://gameplay/mouse.tscn")
 
 func _ready() -> void:
 	pass
@@ -36,7 +37,19 @@ func spawn_prune():
 	var prune = instantiate_prune(spawn_point)
 	get_parent().add_child(prune)
 
+func spawn_enemy():
+	var spawn_point = get_random_spawn_point()
+	spawn_point = align_to_grid(spawn_point)
+	var mouse = instantiate_mouse(spawn_point)
+	get_parent().add_child(mouse)
+	
 # instantiate functions
+
+func instantiate_mouse(position: Vector2) -> Node2D:
+	var mouse = mouse_scene.instantiate()
+	mouse.position = position
+	#mouse.mouse_spawned_on_poop.connect(prevents_spawn_mouse)
+	return mouse
 	
 func instantiate_prune(position: Vector2) -> Node2D:
 	var prune = prune_scene.instantiate()
@@ -59,6 +72,7 @@ func prevents_spawn_food():
 func prevents_spawn_prune():
 	despawn_last_node_in_group("prune")
 	spawn_prune()
+	
 
 # Utility Functions
 
