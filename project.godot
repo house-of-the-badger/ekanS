@@ -30,9 +30,15 @@ window/stretch/mode="viewport"
 
 project/assembly_name="snake-test"
 
+
+[gui]
+
+theme/custom="res://UI/themes/default_theme.tres"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-firebase/plugin.cfg")
+
 
 [input]
 
