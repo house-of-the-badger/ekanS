@@ -108,20 +108,16 @@ func update_snake():
 	
 func _on_food_eaten():
 	detach_tail()
-	# 1 spawn more food
-	spawner.call_deferred("spawn_food") #call_deferred delays execution of code until first idle time in loop. some sort of async I guess
-	#2 add tail
-	#spawner.call_deferred("spawn_tail", snake_parts[snake_parts.size()-1].last_position) #adds tail at end of snake_parts array
-	#3 increase speed
+	spawner.call_deferred("spawn_food")
 	speed += 300.0
-	#4 update score
 	score += 10
 	
 
 func detach_tail():
-	var new_poop = snake_parts.pop_back()
-	decrease_snake_length.emit()
-	new_poop.get_node("Sprite2D").texture = textures[0]
+	if (snake_parts.size() > 1):
+		var new_poop = snake_parts.pop_back()
+		decrease_snake_length.emit()
+		new_poop.get_node("Sprite2D").texture = textures[0]
 	
 
 func _on_tail_added(tail:Tail):
@@ -147,6 +143,7 @@ func _on_head_prune_eaten():
 	for i in 3:
 		detach_tail()
 	score += 20
+	speed += 300
 
 func _on_timer_timeout():
 	if (Levels.Database[Global.current_level].has_prunes):
