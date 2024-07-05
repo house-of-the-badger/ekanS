@@ -159,3 +159,4 @@ func _on_timer_timeout():
 
 func _on_hud_decrease_snake_length():
 	hud.decrease_snake_length()
+

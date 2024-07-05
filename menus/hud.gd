@@ -5,6 +5,7 @@ signal decrease_snake_length
 @onready var score: Label = %Score
 @onready var snake_length: Label = %SnakeLength
 
+
 var new_snake_length = Levels.Database[Global.current_level].starting_length
 
 func _ready():
