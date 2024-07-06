@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var bounds = %Bounds
+#@onready var bounds = %Bounds
 
 
 var speed = 50

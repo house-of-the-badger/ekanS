@@ -29,6 +29,7 @@ var speed:float = 2000.0
 var pooping_speed = 10
 # sets moving direction at start of game. most game start moving left to right, I changed it to up becasue it's for mobile phone
 var move_dir:Vector2 = Vector2.UP #(Vector2(0,-1)
+var next_move_dir:Vector2 = Vector2.UP
 #var head = snake_parts[0]
 var snake_parts:Array[SnakeParts] = []
 var moves_counter:int = 0
@@ -63,19 +64,19 @@ func _process(_delta) -> void: #not sure I know what this void is
 
 	if Input.is_action_pressed("ui_up"): 
 		if (move_dir != Vector2.DOWN):
-			move_dir = Vector2.UP #(0,-1)
+			next_move_dir = Vector2.UP  #(0,-1)
 			head.rotation_degrees = 0.0
 	if Input.is_action_pressed("ui_down"):
 		if (move_dir != Vector2.UP):
-			move_dir = Vector2.DOWN #(0,1)
+			next_move_dir = Vector2.DOWN #(0,1)
 			head.rotation_degrees = 180.0
 	if Input.is_action_pressed("ui_left"):
 		if (move_dir != Vector2.RIGHT):
-			move_dir = Vector2.LEFT #(-1,0)
+			next_move_dir = Vector2.LEFT #(-1,0)
 			head.rotation_degrees = 270.0
 	if Input.is_action_pressed("ui_right"):
 		if (move_dir != Vector2.LEFT):
-			move_dir = Vector2.RIGHT #(1,0)
+			next_move_dir = Vector2.RIGHT #(1,0)
 			head.rotation_degrees = 90.0
 
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -93,6 +94,7 @@ func _physics_process(delta: float) -> void:
 func update_snake():
 	#snake moves on it's own
 	#change snake direction:
+	move_dir = next_move_dir
 	var new_position:Vector2 = head.position + move_dir * Global.CELL_SIZE #size of grid cell, set in global script
 	new_position = bounds.wrap_vector(new_position)
 	head.move_to(new_position) 
