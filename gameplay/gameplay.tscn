@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b58fg43qcwr4x"]
+[gd_scene load_steps=11 format=3 uid="uid://b58fg43qcwr4x"]
 
 [ext_resource type="Script" path="res://gameplay/gameplay.gd" id="1_y073f"]
 [ext_resource type="Texture2D" uid="uid://bufiu2x621u7v" path="res://gameplay/sprites/grid.png" id="2_dwsbb"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://gameplay/bounds.gd" id="3_2fkhv"]
 [ext_resource type="PackedScene" uid="uid://iuet56tbrxsf" path="res://UI/themes/hud_ui.tscn" id="3_n5m7n"]
 [ext_resource type="Script" path="res://gameplay/spawner.gd" id="5_rex01"]
+[ext_resource type="Script" path="res://gameplay/swiping_detector.gd" id="8_q3r24"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a3lxk"]
 texture = ExtResource("2_dwsbb")
@@ -48,15 +49,18 @@ position = Vector2(0, 64)
 
 [node name="LowerRight" type="Marker2D" parent="Bounds"]
 unique_name_in_owner = true
-position = Vector2(480, 960)
+position = Vector2(474, 962)
 
 [node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("bounds")]
 unique_name_in_owner = true
 script = ExtResource("5_rex01")
 bounds = NodePath("../Bounds")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(237, 479)
+script = ExtResource("8_q3r24")
+
 [connection signal="decrease_snake_length" from="." to="HUD" method="_on_gameplay_decrease_snake_length"]
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
-[connection signal="decrease_snake_length" from="HUD" to="." method="_on_hud_decrease_snake_length"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="prune_eaten" from="Head" to="." method="_on_head_prune_eaten"]

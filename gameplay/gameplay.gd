@@ -6,16 +6,34 @@ const gameover_scene:PackedScene = preload("res://UI/game_over_UI.tscn")
 const pausemenu_scene:PackedScene = preload("res://UI/pause_menu_UI.tscn")
 var tail_scene:PackedScene = preload("res://gameplay/tail.tscn")
 
+
 @export var textures:Array[Texture]
-
-#drag node and release while pressing ctrl. make sure type is set as Head as this will help with autocomplete
-
-#drag node and release while pressing ctrl. make sure type is set as Head as this will help with autocomplete
-@onready var head = $Head
-#@onready var tail: 
-@onready var bounds = $Bounds
-@onready var spawner = $Spawner
+@onready var head: Head = %Head as Head 
+#@onready var tail: Tail = %Tail as Tail
+@onready var bounds: Bounds = %Bounds as Bounds
+@onready var spawner: Spawner = %Spawner as Spawner
 @onready var hud = $HUD
+@onready var camera_2d = $Camera2D
+
+const DIRECTION_RIGHT = Vector2.RIGHT
+const DIRECTION_LEFT = Vector2.LEFT
+const DIRECTION_UP = Vector2.UP
+const DIRECTION_DOWN = Vector2.DOWN
+
+const ROTATION_RIGHT: float = 90.0
+const ROTATION_LEFT: float = 270.0
+const ROTATION_UP: float = 0.0
+const ROTATION_DOWN: float = 180.0
+
+var move_dir: Vector2 = Vector2.UP
+var rotation_map = {
+	DIRECTION_RIGHT: ROTATION_RIGHT,
+	DIRECTION_LEFT: ROTATION_LEFT,
+	DIRECTION_UP: ROTATION_UP,
+	DIRECTION_DOWN: ROTATION_DOWN
+}
+#@onready var snake_parts: SnakeParts = %SnakeParts as SnakeParts
+#@onready var snakebody = %snakebody
 #@onready var tail = $Tail
 
 #@onready var snake_parts: SnakeParts = %SnakeParts as SnakeParts
@@ -28,7 +46,7 @@ var time_since_last_move:float = 0
 var speed:float = 2000.0
 var pooping_speed = 10
 # sets moving direction at start of game. most game start moving left to right, I changed it to up becasue it's for mobile phone
-var move_dir:Vector2 = Vector2.UP #(Vector2(0,-1)
+
 var next_move_dir:Vector2 = Vector2.UP
 #var head = snake_parts[0]
 var snake_parts:Array[SnakeParts] = []
@@ -43,10 +61,13 @@ var score:int:
 		hud.update_score(value)
 
 func _ready() -> void:
+	camera_2d.swipe_right.connect(_on_swipe.bind(DIRECTION_RIGHT))
+	camera_2d.swipe_left.connect(_on_swipe.bind(DIRECTION_LEFT))
+	camera_2d.swipe_up.connect(_on_swipe.bind(DIRECTION_UP))
+	camera_2d.swipe_down.connect(_on_swipe.bind(DIRECTION_DOWN))
 	head.food_eaten.connect(_on_food_eaten)
 	head.collided_with_tail.connect(_on_tail_collided)
 	spawner.tail_added.connect(_on_tail_added)
-	#hud.decrease_snake_length.connect(_on_decrease_snake_length)
 	time_since_last_move = time_between_moves
 	snake_parts.push_front(head) # tutorial was using push_back, but I think this is more correct? research
 	initialize_snake()
@@ -54,33 +75,25 @@ func _ready() -> void:
 	spawner.spawn_enemy()
 	
 	
+func _on_swipe(direction: Vector2):
+	if move_dir != -direction:
+		next_move_dir = direction
+		head.rotation_degrees = rotation_map[direction]
 	
 func initialize_snake():
 		spawner.call_deferred("spawn_tail", snake_parts[snake_parts.size()-1].last_position)
 
 
-# sets user input. ui_up (or maybe it's the uppercase direction?) refers to keyboard keys and joypad buttons. Add ASWD in Project Settings
 func _process(_delta) -> void: #not sure I know what this void is
-
-	if Input.is_action_pressed("ui_up"): 
-		if (move_dir != Vector2.DOWN):
-			next_move_dir = Vector2.UP  #(0,-1)
-			head.rotation_degrees = 0.0
-	if Input.is_action_pressed("ui_down"):
-		if (move_dir != Vector2.UP):
-			next_move_dir = Vector2.DOWN #(0,1)
-			head.rotation_degrees = 180.0
-	if Input.is_action_pressed("ui_left"):
-		if (move_dir != Vector2.RIGHT):
-			next_move_dir = Vector2.LEFT #(-1,0)
-			head.rotation_degrees = 270.0
-	if Input.is_action_pressed("ui_right"):
-		if (move_dir != Vector2.LEFT):
-			next_move_dir = Vector2.RIGHT #(1,0)
-			head.rotation_degrees = 90.0
-
+	if Input.is_action_just_pressed("ui_up"):
+		_on_swipe(DIRECTION_UP)
+	elif Input.is_action_just_pressed("ui_down"):
+		_on_swipe(DIRECTION_DOWN)
+	elif Input.is_action_just_pressed("ui_left"):
+		_on_swipe(DIRECTION_LEFT)
+	elif Input.is_action_just_pressed("ui_right"):
+		_on_swipe(DIRECTION_RIGHT)
 	if Input.is_action_just_pressed("ui_cancel"):
-		
 		pause_game()
 
 #snake is made of area2d nodes, and area2d are physics, we use a physics process loop
@@ -156,8 +169,6 @@ func _on_timer_timeout():
 	if (Levels.Database[Global.current_level].has_prunes):
 		spawner.call_deferred("spawn_prune")
 	
-#func _on_decrease_snake_length():
-	#hud.decrease_snake_length()
 
 func _on_hud_decrease_snake_length():
 	hud.decrease_snake_length()
