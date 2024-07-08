@@ -1,20 +1,35 @@
-class_name Head extends SnakeParts #remember OOP and classes. inherits from SnakePart
+class_name Head extends SnakeParts # Remember OOP and classes. Inherits from SnakeParts
 
 signal food_eaten
 signal collided_with_tail
 signal prune_eaten
+signal mouse_eaten
 
 func _on_area_entered(area):
-	# print("collided with ", area.name)
 	if area.is_in_group("food"):
-		# collided with food
-		food_eaten.emit()
-		#area.queue_free() this can also be used, but in the tutorial it created an error and was changed. to be researched
-		area.call_deferred("queue_free")
+		_handle_food_collision(area)
 	elif area.is_in_group("prune"):
-		prune_eaten.emit()
-		area.call_deferred("queue_free")
+		_handle_prune_collision(area)
+	elif area.is_in_group("mouse"):
+		_handle_mouse_collision(area)
 	else:
-		#collided with something that isn't food
-		collided_with_tail.emit()
-		
+		_handle_tail_collision()
+
+func _on_body_entered(body):
+	mouse_eaten.emit()
+	body.queue_free()
+
+func _handle_food_collision(area):
+	food_eaten.emit()
+	area.call_deferred("queue_free")
+
+func _handle_prune_collision(area):
+	prune_eaten.emit()
+	area.call_deferred("queue_free")
+
+func _handle_mouse_collision(area):
+	mouse_eaten.emit()
+	area.call_deferred("queue_free")
+
+func _handle_tail_collision():
+	collided_with_tail.emit()

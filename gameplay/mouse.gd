@@ -1,44 +1,32 @@
-extends CharacterBody2D
+class_name Mouse extends CharacterBody2D
 
-#@onready var bounds = %Bounds
+signal spawn_mouse
 
 
-var speed = 50
-var motion = Vector2() 
-var gravity = 1
-var direction = 1 
-var last_position:Vector2
+const SPEED = 75
 
+var motion = Vector2()
+var gravity = 0
+var direction = 0
+var last_position: Vector2
+var rng = RandomNumberGenerator.new()
+
+func _ready():
+	rng.randomize()
+	gravity = generate_random_sign()
+	direction = generate_random_sign()
 
 func _physics_process(delta):
 	motion.y += gravity
-	motion.x = speed * direction 
+	motion.x = SPEED * direction
 	move_and_collide(motion * delta)
+	if is_outside_viewport():
+		queue_free()  # Despawn the mouse if it's outside the viewport
 
-func move_to(new_position:Vector2):
-	last_position = self.position
-	self.position = new_position
+func generate_random_sign() -> int:
+	return (rng.randi() % 2) * 2 - 1
 
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-#var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-#
-#
-#func _physics_process(delta):
-	## Add the gravity.
-	#if not is_on_floor():
-		#velocity.y += gravity * delta
-#
-	## Handle jump.
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		#velocity.y = JUMP_VELOCITY
-#
-	## Get the input direction and handle the movement/deceleration.
-	## As good practice, you should replace UI actions with custom gameplay actions.
-	#var direction = Input.get_axis("ui_left", "ui_right")
-	#if direction:
-		#velocity.x = direction * SPEED
-	#else:
-		#velocity.x = move_toward(velocity.x, 0, SPEED)
-#
-	#move_and_slide()
+func is_outside_viewport() -> bool:
+	var viewport = get_viewport()
+	var viewport_rect = viewport.get_visible_rect()
+	return !viewport_rect.has_point(position)

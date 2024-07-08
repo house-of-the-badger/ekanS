@@ -1,21 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5ddu01jkuif5"]
 
 [ext_resource type="Script" path="res://gameplay/mouse.gd" id="1_x5rye"]
-[ext_resource type="Texture2D" uid="uid://baod6c77fga4c" path="res://gameplay/sprites/snake-tail.png" id="2_ehwad"]
+[ext_resource type="Texture2D" uid="uid://dc7j6xqyordy3" path="res://gameplay/sprites/kisspng-rat-sprite-little-red-and-professor-wolf-common-op-rat-sprite-image-little-red-and-professor-wolf-5bab9f5a1b3e61.6874345715379741061116.png" id="2_nkjik"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odpa6"]
 size = Vector2(70, 64)
 
-[node name="mouse" type="CharacterBody2D" groups=["mouse"]]
-position = Vector2(101, 116)
+[node name="Mouse" type="CharacterBody2D" groups=["mouse"]]
+position = Vector2(32, 48)
 scale = Vector2(0.5, 0.5)
+motion_mode = 1
 script = ExtResource("1_x5rye")
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2, 0)
-texture = ExtResource("2_ehwad")
+position = Vector2(7.00001, -17.1214)
+scale = Vector2(0.183594, 0.198745)
+texture = ExtResource("2_nkjik")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0)
+position = Vector2(10, -2)
 shape = SubResource("RectangleShape2D_odpa6")

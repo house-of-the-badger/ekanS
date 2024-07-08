@@ -17,9 +17,9 @@ func _ready() -> void:
 
 #Spawn functions
 
-func spawn_tail(pos: Vector2):
+func spawn_tail(pos: Vector2, tails_to_add):
 	var head_position = head.position
-	for i in Levels.Database[Global.current_level].starting_length:
+	for i in tails_to_add:
 		var tail: Tail = tail_scene.instantiate() as Tail
 		tail.position = pos + Vector2(head_position.x, (i + 9) * Global.CELL_SIZE)
 		get_parent().add_child(tail)
