@@ -15,7 +15,7 @@ func set_score(n:int):
 		high_score.visible = false
 
 func _on_restart_button_pressed() -> void:
-	get_tree().reload_current_scene() #this works for simple games. might also work for ekans, research
+	get_tree().reload_current_scene()
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

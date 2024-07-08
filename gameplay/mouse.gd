@@ -21,7 +21,7 @@ func _physics_process(delta):
 	motion.x = SPEED * direction
 	move_and_collide(motion * delta)
 	if is_outside_viewport():
-		queue_free()  # Despawn the mouse if it's outside the viewport
+		queue_free()  #Despawns the mouse if it's outside the viewport
 
 func generate_random_sign() -> int:
 	return (rng.randi() % 2) * 2 - 1

@@ -24,7 +24,7 @@ func _ready():
 	
 func load_images_from_firebase() -> void:
 	var folder_ref = Firebase.Storage.ref(FOLDER_REFERENCE)
-	var paths_array = await folder_ref.list_all() #gives me an array of /avatars/:avatar_id
+	var paths_array = await folder_ref.list_all() #gives an array of /avatars/:avatar_id
 	if paths_array.size() > 0:
 		for file_path in paths_array:
 			var file_ref = Firebase.Storage.ref(file_path)
