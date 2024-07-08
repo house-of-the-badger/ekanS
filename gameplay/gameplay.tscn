@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b58fg43qcwr4x"]
+[gd_scene load_steps=12 format=3 uid="uid://b58fg43qcwr4x"]
 
 [ext_resource type="Script" path="res://gameplay/gameplay.gd" id="1_y073f"]
 [ext_resource type="Texture2D" uid="uid://bufiu2x621u7v" path="res://gameplay/sprites/grid.png" id="2_dwsbb"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://gameplay/bounds.gd" id="3_2fkhv"]
 [ext_resource type="PackedScene" uid="uid://iuet56tbrxsf" path="res://UI/themes/hud_ui.tscn" id="3_n5m7n"]
 [ext_resource type="Script" path="res://gameplay/spawner.gd" id="5_rex01"]
+[ext_resource type="Script" path="res://gameplay/MouseSpawnTimer.gd" id="8_xamyv"]
+[ext_resource type="Script" path="res://gameplay/PoopDespawnTimer.gd" id="9_c1va4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a3lxk"]
 texture = ExtResource("2_dwsbb")
@@ -55,8 +57,21 @@ unique_name_in_owner = true
 script = ExtResource("5_rex01")
 bounds = NodePath("../Bounds")
 
+[node name="MouseSpawnTimer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+script = ExtResource("8_xamyv")
+
+[node name="PoopDespawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+script = ExtResource("9_c1va4")
+
 [connection signal="decrease_snake_length" from="." to="HUD" method="_on_gameplay_decrease_snake_length"]
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="decrease_snake_length" from="HUD" to="." method="_on_hud_decrease_snake_length"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="mouse_eaten" from="Head" to="." method="_on_head_mouse_eaten"]
 [connection signal="prune_eaten" from="Head" to="." method="_on_head_prune_eaten"]
+[connection signal="timeout" from="MouseSpawnTimer" to="." method="_on_mouse_spawn_timer_timeout"]
+[connection signal="timeout" from="PoopDespawnTimer" to="." method="_on_poop_despawn_timer_timeout"]
