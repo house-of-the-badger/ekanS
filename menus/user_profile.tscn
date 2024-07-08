@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c2i25e4v5wfoy"]
 
-[ext_resource type="Texture2D" uid="uid://dqspweumdsoox" path="res://Assets/snake1.png" id="1_xma36"]
+[ext_resource type="Script" path="res://menus/user_profile.gd" id="1_0xmrg"]
 
 [node name="UserProfile" type="Control"]
 layout_mode = 3
@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0xmrg")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -32,19 +33,40 @@ layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer"]
+[node name="PlayerAvatar" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("1_xma36")
 expand_mode = 4
 
-[node name="UsernameLabel" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+[node name="SnakeNameTitle" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Username"
+theme_override_font_sizes/font_size = 30
+text = "Your Snake is"
+horizontal_alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+[node name="SnakeNameLabel" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Total Score"
+theme_override_font_sizes/font_size = 30
+text = "Your Snake is"
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
+[node name="TotalScoreTitle" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Your Total Score:"
+horizontal_alignment = 1
+
+[node name="TotalScoreLabel" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Your Total Score:"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Back to Game"
+
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
