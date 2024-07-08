@@ -16,6 +16,7 @@ var tail_scene:PackedScene = preload("res://gameplay/tail.tscn")
 @onready var bounds = $Bounds
 @onready var spawner = $Spawner
 @onready var hud = $HUD
+
 #@onready var tail = $Tail
 
 #@onready var snake_parts: SnakeParts = %SnakeParts as SnakeParts
@@ -23,9 +24,10 @@ var tail_scene:PackedScene = preload("res://gameplay/tail.tscn")
 
 
 #set interval between snake movement
+var level = Levels.Database[Global.current_level]
 var time_between_moves:float = 1000.0
 var time_since_last_move:float = 0
-var speed:float = 2000.0
+var speed:float = level.speed
 var pooping_speed = 10
 # sets moving direction at start of game. most game start moving left to right, I changed it to up becasue it's for mobile phone
 var move_dir:Vector2 = Vector2.UP #(Vector2(0,-1)
@@ -50,12 +52,13 @@ func _ready() -> void:
 	snake_parts.push_front(head) # tutorial was using push_back, but I think this is more correct? research
 	initialize_snake()
 	spawner.spawn_food()
-	spawner.spawn_enemy()
+
 	
 	
 	
 func initialize_snake():
-		spawner.call_deferred("spawn_tail", snake_parts[snake_parts.size()-1].last_position)
+	var starting_snake_length = level.starting_length	
+	spawner.call_deferred("spawn_tail", snake_parts[snake_parts.size()-1].last_position, starting_snake_length)
 
 
 # sets user input. ui_up (or maybe it's the uppercase direction?) refers to keyboard keys and joypad buttons. Add ASWD in Project Settings
@@ -117,12 +120,14 @@ func _on_food_eaten():
 	speed += 300.0
 	score += 10
 	
+var poop_array = []
 
 func detach_tail():
 	if (snake_parts.size() > 1):
 		var new_poop = snake_parts.pop_back()
 		decrease_snake_length.emit()
 		new_poop.get_node("Sprite2D").texture = textures[0]
+		poop_array.push_back(new_poop)
 	
 
 func _on_tail_added(tail:Tail):
@@ -151,12 +156,23 @@ func _on_head_prune_eaten():
 	speed += 300
 
 func _on_timer_timeout():
-	if (Levels.Database[Global.current_level].has_prunes):
+	if (level.has_prunes):
 		spawner.call_deferred("spawn_prune")
-	
-#func _on_decrease_snake_length():
-	#hud.decrease_snake_length()
 
 func _on_hud_decrease_snake_length():
 	hud.decrease_snake_length()
 
+
+
+func _on_mouse_spawn_timer_timeout():
+	return spawner.spawn_enemy()
+
+
+func _on_head_mouse_eaten():
+	spawner.spawn_tail(snake_parts[snake_parts.size()-1].last_position, 3)
+
+
+func _on_poop_despawn_timer_timeout():
+	if poop_array.size() > 1:
+		var poop_to_despawn = poop_array.pop_front()
+		poop_to_despawn.queue_free()
