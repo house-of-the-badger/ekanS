@@ -16,7 +16,7 @@ texture = ExtResource("1_ikv46")
 shape = SubResource("CircleShape2D_klp8s")
 
 [node name="DespawnTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 

@@ -4,6 +4,7 @@ signal decrease_snake_length
 
 const gameover_scene:PackedScene = preload("res://UI/game_over_UI.tscn")
 const pausemenu_scene:PackedScene = preload("res://UI/pause_menu_UI.tscn")
+const gamewin_scene:PackedScene = preload("res://menus/game_win.tscn")
 var tail_scene:PackedScene = preload("res://gameplay/tail.tscn")
 
 
@@ -50,6 +51,7 @@ var snake_parts:Array[SnakeParts] = []
 var moves_counter:int = 0
 var pause_menu:PauseMenu
 var gameover_menu:GameOver
+var gamewin_screen
 var score:int:
 	get:
 		return score
@@ -114,12 +116,17 @@ func update_snake():
 		score += 1
 		detach_tail()
 		speed += 300
-	if(snake_parts.size() <= 1): #waiting for win scene
-		Global.current_level = "level" + str(int(Global.current_level) + 1)
-		if not gameover_menu:
-			gameover_menu = gameover_scene.instantiate() as GameOver
-			add_child(gameover_menu)
-			gameover_menu.set_score(score)
+
+	if(snake_parts.size() <= 1): # waiting for win scene
+		#Global.current_level = "level" + str(int(Global.current_level) + 1)
+		#if not gameover_menu:
+		gamewin_screen = gamewin_scene.instantiate()
+		add_child(gamewin_screen)
+		gamewin_screen.set_score(score)
+		
+			#gameover_menu = gameover_scene.instantiate() as GameOver
+			#add_child(gameover_menu)
+			#gameover_menu.set_score(score)
 	
 func _on_food_eaten():
 	detach_tail()
@@ -140,7 +147,7 @@ func _on_tail_added(tail:Tail):
 		snake_parts.push_back(tail)
 
 func _on_tail_collided():
-	if not gameover_menu:
+	if not gameover_menu && not gamewin_screen:
 		gameover_menu = gameover_scene.instantiate() as GameOver
 		add_child(gameover_menu)
 		gameover_menu.set_score(score)
