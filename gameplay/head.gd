@@ -1,4 +1,4 @@
-class_name Head extends SnakeParts # Remember OOP and classes. Inherits from SnakeParts
+class_name Head extends SnakeParts
 
 signal food_eaten
 signal collided_with_tail

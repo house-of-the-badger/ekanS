@@ -1,12 +1,16 @@
 class_name Spawner extends Node2D
-#signals
+
+#Signals
+
 signal tail_added(tail: Tail)
 
+#Export vars
+
 @onready var head = %Head
-#export vars
 @export var bounds: Bounds
 
-#instatiating packed scenes
+#Instatiating packed scenes
+
 var food_scene: PackedScene = preload ("res://gameplay/food.tscn") # preloads food into memory so instantiation is faster
 var tail_scene: PackedScene = preload ("res://gameplay/tail.tscn")
 var prune_scene: PackedScene = preload ("res://gameplay/prune.tscn")
@@ -48,7 +52,6 @@ func spawn_enemy():
 func instantiate_mouse(position: Vector2) -> Node2D:
 	var mouse = mouse_scene.instantiate()
 	mouse.position = position
-	#mouse.mouse_spawned_on_poop.connect(prevents_spawn_mouse)
 	return mouse
 	
 func instantiate_prune(position: Vector2) -> Node2D:

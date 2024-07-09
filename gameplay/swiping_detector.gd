@@ -6,13 +6,13 @@ signal swipe_up
 signal swipe_down
 
 var swipe_start: Vector2
-var swipe_threshold: float = 50.0  # Minimum swipe distance to be considered a swipe
+var swipe_threshold: float = 50.0  #Minimum swipe distance to be considered a swipe
 
 func _ready():
-	set_process_input(true)  # Enable input handling
+	set_process_input(true)  #Enable input handling
 
 func _input(event):
-	# Handle touch swipe events
+	#Handle touch swipe events
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			swipe_start = event.position

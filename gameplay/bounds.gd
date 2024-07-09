@@ -9,7 +9,7 @@ var x_min:float
 var y_max:float
 var y_min:float
 
-func _ready() -> void: #i feel like this void means I don't need to return something at the end of the loop
+func _ready() -> void: #void functions don't return a value. Printing the return value from a void function would give Null. 
 	x_max = lower_right.position.x
 	x_min = upper_left.position.x
 	y_max = lower_right.position.y
