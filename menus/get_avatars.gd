@@ -1,11 +1,11 @@
 class_name GetAvatars extends Node
 
-@onready var avatar_1 = %Avatar1
-@onready var avatar_2 = %Avatar2
-@onready var avatar_3 = %Avatar3
-@onready var avatar_4 = %Avatar4
-@onready var avatar_5 = %Avatar5
-@onready var avatar_6 = %Avatar6
+@onready var avatar_01 = %Avatar1
+@onready var avatar_02 = %Avatar2
+@onready var avatar_03 = %Avatar3
+@onready var avatar_04 = %Avatar4
+@onready var avatar_05 = %Avatar5
+@onready var avatar_06 = %Avatar6
 
 var FOLDER_REFERENCE = "avatars"
 var texture_buttons = []
@@ -13,18 +13,18 @@ var textures = []
 var urls = []
 
 func _ready():
-	texture_buttons.append(%Avatar1)
-	texture_buttons.append(%Avatar2)
-	texture_buttons.append(%Avatar3)
-	texture_buttons.append(%Avatar4)
-	texture_buttons.append(%Avatar5)
-	texture_buttons.append(%Avatar6)
+	texture_buttons.append(avatar_01)
+	texture_buttons.append(avatar_02)
+	texture_buttons.append(avatar_03)
+	texture_buttons.append(avatar_04)
+	texture_buttons.append(avatar_05)
+	texture_buttons.append(avatar_06)
 	
 	load_images_from_firebase()
 	
 func load_images_from_firebase() -> void:
 	var folder_ref = Firebase.Storage.ref(FOLDER_REFERENCE)
-	var paths_array = await folder_ref.list_all() #gives me an array of /avatars/:avatar_id
+	var paths_array = await folder_ref.list_all() #gives an array of /avatars/:avatar_id
 	if paths_array.size() > 0:
 		for file_path in paths_array:
 			var file_ref = Firebase.Storage.ref(file_path)
