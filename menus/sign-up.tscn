@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bghnhrn6geaus"]
+[gd_scene load_steps=6 format=3 uid="uid://bghnhrn6geaus"]
 
 [ext_resource type="Script" path="res://menus/sign-up.gd" id="1_jw0nw"]
+[ext_resource type="Theme" uid="uid://dli07bvsmri8n" path="res://UI/themes/default_theme.tres" id="1_sm3qx"]
 [ext_resource type="Texture2D" uid="uid://ctifcjlpycxgv" path="res://Assets/avatar_11.png" id="2_opwwj"]
 [ext_resource type="FontFile" uid="uid://djgm5dobe81rq" path="res://UI/fonts/Play-Bold.ttf" id="3_s6l0k"]
 [ext_resource type="FontFile" uid="uid://b8it623mylgpj" path="res://UI/fonts/Play-Regular.ttf" id="4_cto6d"]
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_sm3qx")
 script = ExtResource("1_jw0nw")
 
 [node name="Panel" type="Panel" parent="."]
