@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b58fg43qcwr4x"]
+[gd_scene load_steps=13 format=3 uid="uid://b58fg43qcwr4x"]
 
 [ext_resource type="Script" path="res://gameplay/gameplay.gd" id="1_y073f"]
 [ext_resource type="Texture2D" uid="uid://bufiu2x621u7v" path="res://gameplay/sprites/grid.png" id="2_dwsbb"]
@@ -7,10 +7,13 @@
 [ext_resource type="Script" path="res://gameplay/bounds.gd" id="3_2fkhv"]
 [ext_resource type="PackedScene" uid="uid://iuet56tbrxsf" path="res://UI/themes/hud_ui.tscn" id="3_n5m7n"]
 [ext_resource type="Script" path="res://gameplay/spawner.gd" id="5_rex01"]
+
 [ext_resource type="Script" path="res://gameplay/swiping_detector.gd" id="8_q3r24"]
+
 [ext_resource type="Script" path="res://gameplay/MouseSpawnTimer.gd" id="8_xamyv"]
 [ext_resource type="Script" path="res://gameplay/PoopDespawnTimer.gd" id="9_c1va4"]
 [ext_resource type="Script" path="res://gameplay/MelonSpawnTimer.gd" id="10_n0qen"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a3lxk"]
 texture = ExtResource("2_dwsbb")
@@ -40,6 +43,7 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608,
 [node name="Head" parent="." instance=ExtResource("2_f26u1")]
 unique_name_in_owner = true
 position = Vector2(192, 256)
+scale = Vector2(0.5, 0.5)
 
 [node name="Bounds" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -57,6 +61,7 @@ position = Vector2(474, 962)
 unique_name_in_owner = true
 script = ExtResource("5_rex01")
 bounds = NodePath("../Bounds")
+
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(237, 479)
