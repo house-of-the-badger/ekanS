@@ -1,4 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://b58fg43qcwr4x"]
+
+[gd_scene load_steps=12 format=3 uid="uid://b58fg43qcwr4x"]
 
 [ext_resource type="Script" path="res://gameplay/gameplay.gd" id="1_y073f"]
 [ext_resource type="Texture2D" uid="uid://bufiu2x621u7v" path="res://gameplay/sprites/grid.png" id="2_dwsbb"]
@@ -12,7 +13,6 @@
 
 [ext_resource type="Script" path="res://gameplay/MouseSpawnTimer.gd" id="8_xamyv"]
 [ext_resource type="Script" path="res://gameplay/PoopDespawnTimer.gd" id="9_c1va4"]
-[ext_resource type="Script" path="res://gameplay/MelonSpawnTimer.gd" id="10_n0qen"]
 
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a3lxk"]
@@ -77,16 +77,10 @@ wait_time = 5.0
 autostart = true
 script = ExtResource("9_c1va4")
 
-[node name="MelonSpawnTimer" type="Timer" parent="."]
-wait_time = 0.5
-script = ExtResource("10_n0qen")
-
 [connection signal="decrease_snake_length" from="." to="HUD" method="_on_gameplay_decrease_snake_length"]
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="melon_eaten" from="Head" to="." method="_on_head_melon_eaten"]
 [connection signal="mouse_eaten" from="Head" to="." method="_on_head_mouse_eaten"]
 [connection signal="prune_eaten" from="Head" to="." method="_on_head_prune_eaten"]
 [connection signal="timeout" from="MouseSpawnTimer" to="." method="_on_mouse_spawn_timer_timeout"]
 [connection signal="timeout" from="PoopDespawnTimer" to="." method="_on_poop_despawn_timer_timeout"]
-[connection signal="timeout" from="MelonSpawnTimer" to="." method="_on_melon_spawn_timer_timeout"]

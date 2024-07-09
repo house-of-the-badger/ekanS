@@ -15,7 +15,6 @@ var food_scene: PackedScene = preload ("res://gameplay/food.tscn") # preloads fo
 var tail_scene: PackedScene = preload ("res://gameplay/tail.tscn")
 var prune_scene: PackedScene = preload ("res://gameplay/prune.tscn")
 var mouse_scene: PackedScene = preload ("res://gameplay/mouse.tscn")
-var melon_scene: PackedScene = preload ("res://gameplay/melon.tscn")
 
 func _ready() -> void:
 	pass
@@ -41,12 +40,6 @@ func spawn_prune():
 	spawn_point = align_to_grid(spawn_point)
 	var prune = instantiate_prune(spawn_point)
 	get_parent().add_child(prune)
-	
-func spawn_melon():
-	var spawn_point = get_random_spawn_point()
-	spawn_point = align_to_grid(spawn_point)
-	var melon = instantiate_melon(spawn_point)
-	get_parent().add_child(melon)
 
 func spawn_enemy():
 	var spawn_point = get_random_spawn_point()
@@ -66,12 +59,6 @@ func instantiate_prune(position: Vector2) -> Node2D:
 	prune.position = position
 	prune.prune_spawned_on_poop.connect(prevents_spawn_prune)
 	return prune
-	
-func instantiate_melon(position: Vector2) -> Node2D:
-	var melon = melon_scene.instantiate()
-	melon.position = position
-	melon.melon_spawned_on_poop.connect(prevents_spawn_melon)
-	return melon
 
 func instantiate_food(position: Vector2) -> Node2D:
 	var food = food_scene.instantiate()
@@ -88,10 +75,6 @@ func prevents_spawn_food():
 func prevents_spawn_prune():
 	despawn_last_node_in_group("prune")
 	spawn_prune()
-	
-func prevents_spawn_melon():
-	despawn_last_node_in_group("melon")
-	spawn_melon()
 	
 
 # Utility Functions

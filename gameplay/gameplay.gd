@@ -4,7 +4,6 @@ signal decrease_snake_length
 
 const gameover_scene:PackedScene = preload("res://UI/game_over_UI.tscn")
 const pausemenu_scene:PackedScene = preload("res://UI/pause_menu_UI.tscn")
-const gamewin_scene:PackedScene = preload("res://menus/game_win.tscn")
 var tail_scene:PackedScene = preload("res://gameplay/tail.tscn")
 
 
@@ -13,9 +12,6 @@ var tail_scene:PackedScene = preload("res://gameplay/tail.tscn")
 @onready var bounds: Bounds = %Bounds as Bounds
 @onready var spawner: Spawner = %Spawner as Spawner
 @onready var hud = $HUD
-@onready var melon_spawn_timer = $MelonSpawnTimer
-@onready var despawn_melon_timer = $DespawnMelonTimer
-const MELON = preload("res://gameplay/melon.tscn")
 
 @onready var camera_2d = $Camera2D
 
@@ -51,7 +47,6 @@ var snake_parts:Array[SnakeParts] = []
 var moves_counter:int = 0
 var pause_menu:PauseMenu
 var gameover_menu:GameOver
-var gamewin_screen
 var score:int:
 	get:
 		return score
@@ -116,17 +111,12 @@ func update_snake():
 		score += 1
 		detach_tail()
 		speed += 300
-
-	if(snake_parts.size() <= 1): # waiting for win scene
-		#Global.current_level = "level" + str(int(Global.current_level) + 1)
-		#if not gameover_menu:
-		gamewin_screen = gamewin_scene.instantiate()
-		add_child(gamewin_screen)
-		gamewin_screen.set_score(score)
-		
-			#gameover_menu = gameover_scene.instantiate() as GameOver
-			#add_child(gameover_menu)
-			#gameover_menu.set_score(score)
+	if(snake_parts.size() <= 1): #waiting for win scene
+		Global.current_level = "level" + str(int(Global.current_level) + 1)
+		if not gameover_menu:
+			gameover_menu = gameover_scene.instantiate() as GameOver
+			add_child(gameover_menu)
+			gameover_menu.set_score(score)
 	
 func _on_food_eaten():
 	detach_tail()
@@ -147,7 +137,7 @@ func _on_tail_added(tail:Tail):
 		snake_parts.push_back(tail)
 
 func _on_tail_collided():
-	if not gameover_menu && not gamewin_screen:
+	if not gameover_menu:
 		gameover_menu = gameover_scene.instantiate() as GameOver
 		add_child(gameover_menu)
 		gameover_menu.set_score(score)
@@ -184,22 +174,3 @@ func _on_poop_despawn_timer_timeout():
 	if poop_array.size() > 1:
 		var poop_to_despawn = poop_array.pop_front()
 		poop_to_despawn.queue_free()
-
-
-func _on_head_melon_eaten():
-	for i in poop_array.size():
-		var poop_to_despawn = poop_array.pop_front()
-		poop_to_despawn.queue_free()
-		
-
-func spawn_on_half_length():
-
-	if snake_parts.size() == level.starting_length / 2:
-		spawner.spawn_melon()
-		melon_spawn_timer.stop()
-
-
-func _on_melon_spawn_timer_timeout():
-	spawn_on_half_length()
-
-
