@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://btidl4n2v5fbu"]
+
+[ext_resource type="Texture2D" uid="uid://o750wvddiiff" path="res://gameplay/sprites/watermelon.png" id="1_ikv46"]
+[ext_resource type="Script" path="res://gameplay/melon.gd" id="1_qpism"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_klp8s"]
+radius = 12.0416
+
+[node name="Melon" type="Area2D" groups=["melon"]]
+script = ExtResource("1_qpism")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ikv46")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_klp8s")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

@@ -12,6 +12,9 @@ var tail_scene:PackedScene = preload("res://gameplay/tail.tscn")
 @onready var bounds: Bounds = %Bounds as Bounds
 @onready var spawner: Spawner = %Spawner as Spawner
 @onready var hud = $HUD
+@onready var melon_spawn_timer = $MelonSpawnTimer
+@onready var despawn_melon_timer = $DespawnMelonTimer
+const MELON = preload("res://gameplay/melon.tscn")
 
 @onready var camera_2d = $Camera2D
 
@@ -174,3 +177,22 @@ func _on_poop_despawn_timer_timeout():
 	if poop_array.size() > 1:
 		var poop_to_despawn = poop_array.pop_front()
 		poop_to_despawn.queue_free()
+
+
+func _on_head_melon_eaten():
+	for i in poop_array.size():
+		var poop_to_despawn = poop_array.pop_front()
+		poop_to_despawn.queue_free()
+		
+
+func spawn_on_half_length():
+
+	if snake_parts.size() == level.starting_length / 2:
+		spawner.spawn_melon()
+		melon_spawn_timer.stop()
+
+
+func _on_melon_spawn_timer_timeout():
+	spawn_on_half_length()
+
+
